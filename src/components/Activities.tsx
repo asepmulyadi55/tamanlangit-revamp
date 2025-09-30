@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default function Activities() {
   const packages = [
     {
@@ -60,10 +62,12 @@ export default function Activities() {
           {packages.map((pkg) => (
             <div key={pkg.id} className="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
               <div className={`relative h-64 bg-gradient-to-br ${pkg.bgGradient}`}>
-                <img 
+                <Image
                   src={pkg.image} 
                   alt={pkg.alt} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  width={1000}
+                  height={600}
                 />
                 <div className={`absolute top-4 right-4 ${pkg.badgeColor} backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium`}>
                   {pkg.badge}

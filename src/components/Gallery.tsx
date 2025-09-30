@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default function Gallery() {
   const galleryImages = [
     {
@@ -48,10 +50,12 @@ export default function Gallery() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Left Column - Large Image */}
           <div className="w-full">
-            <img 
+            <Image
               src={galleryImages[0].src}
               alt={galleryImages[0].alt}
               className={`${galleryImages[0].className} object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+              width={1000}
+              height={600}
             />
           </div>
           
@@ -59,33 +63,41 @@ export default function Gallery() {
           <div className="grid grid-cols-2 gap-4 h-[400px] lg:h-[500px]">
             {/* Top Row */}
             <div className="h-full">
-              <img 
+              <Image
                 src={galleryImages[1].src}
                 alt={galleryImages[1].alt}
                 className={`${galleryImages[1].className} object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                width={1000}
+                height={600}
               />
             </div>
             <div className="h-full">
-              <img 
+              <Image
                 src={galleryImages[2].src}
                 alt={galleryImages[2].alt}
                 className={`${galleryImages[2].className} object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                width={1000}
+                height={600}
               />
             </div>
             
             {/* Bottom Row */}
             <div className="h-full">
-              <img 
+              <Image
                 src={galleryImages[3].src}
                 alt={galleryImages[3].alt}
                 className={`${galleryImages[3].className} object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                width={1000}
+                height={600}
               />
             </div>
             <div className="h-full">
-              <img 
+              <Image
                 src={galleryImages[4].src}
                 alt={galleryImages[4].alt}
                 className={`${galleryImages[4].className} object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg`}
+                width={1000}
+                height={600}
               />
             </div>
           </div>
