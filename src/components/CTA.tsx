@@ -34,7 +34,7 @@ export default function CTA() {
   ];
 
   return (
-    <section id="kontak" className="py-20 bg-gradient-to-r from-nature-green via-forest-green to-sage-green cta-gradient relative overflow-hidden">
+    <section id="kontak" className="py-20 bg-gradient-to-r from-nature-green via-forest-green to-sage-green relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-mountain-pattern opacity-10"></div>
       
