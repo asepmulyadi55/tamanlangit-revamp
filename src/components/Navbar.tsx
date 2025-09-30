@@ -85,12 +85,12 @@ export default function Navbar() {
         
         {/* Mobile Menu */}
         <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-nature-green/95 border-t border-gray-300">
-            <a href="#beranda" onClick={(e) => handleNavClick(e, '#beranda')} className="block px-3 py-2 text-white hover:text-gray-200 hover:bg-nature-green/80 rounded-md transition-colors font-medium">Beranda</a>
-            <a href="#tentang" onClick={(e) => handleNavClick(e, '#tentang')} className="block px-3 py-2 text-white hover:text-gray-200 hover:bg-nature-green/80 rounded-md transition-colors font-medium">Tentang</a>
-            <a href="#paket" onClick={(e) => handleNavClick(e, '#paket')} className="block px-3 py-2 text-white hover:text-gray-200 hover:bg-nature-green/80 rounded-md transition-colors font-medium">Paket Wisata</a>
-            <a href="#galeri" onClick={(e) => handleNavClick(e, '#galeri')} className="block px-3 py-2 text-white hover:text-gray-200 hover:bg-nature-green/80 rounded-md transition-colors font-medium">Galeri</a>
-            <a href="#kontak" onClick={(e) => handleNavClick(e, '#kontak')} className="block px-3 py-2 text-white hover:text-gray-200 hover:bg-nature-green/80 rounded-md transition-colors font-medium">Kontak</a>
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-green/95 border-t border-gray-300">
+            <a href="#beranda" onClick={(e) => handleNavClick(e, '#beranda')} className="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Beranda</a>
+            <a href="#tentang" onClick={(e) => handleNavClick(e, '#tentang')} className="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Tentang</a>
+            <a href="#paket" onClick={(e) => handleNavClick(e, '#paket')} className="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Paket Wisata</a>
+            <a href="#galeri" onClick={(e) => handleNavClick(e, '#galeri')} className="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Galeri</a>
+            <a href="#kontak" onClick={(e) => handleNavClick(e, '#kontak')} className="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Kontak</a>
           </div>
         </div>
       </div>
