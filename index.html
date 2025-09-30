@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taman Langit Pangalengan - Premium Camping & Nature Tourism</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif']
+                    },
+                    colors: {
+                        'nature-green': '#2D5016',
+                        'forest-green': '#4A7C59',
+                        'sage-green': '#8FBC8F',
+                        'mountain-blue': '#2563eb',
+                        'earth-brown': '#8B4513',
+                        'sunset-orange': '#FF8C42',
+                        'morning-gold': '#FFD700'
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(135deg, rgba(45, 80, 22, 0.9) 0%, rgba(74, 124, 89, 0.8) 100%)',
+                        'mountain-pattern': 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Cpath d="m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.9) 0%, rgba(74, 124, 89, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scroll-fade {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-nature-green to-forest-green rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12L8 10l2-2 2 2-2 2zM4.93 4.93l1.41 1.41L10 2.69l3.66 3.65 1.41-1.41L10 0 4.93 4.93z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-xl font-playfair font-bold text-nature-green">Taman Langit</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-gray-700 hover:text-nature-green transition-colors font-medium">Beranda</a>
+                    <a href="#tentang" class="text-gray-700 hover:text-nature-green transition-colors font-medium">Tentang</a>
+                    <a href="#paket" class="text-gray-700 hover:text-nature-green transition-colors font-medium">Paket Wisata</a>
+                    <a href="#galeri" class="text-gray-700 hover:text-nature-green transition-colors font-medium">Galeri</a>
+                    <a href="#kontak" class="text-gray-700 hover:text-nature-green transition-colors font-medium">Kontak</a>
+                </div>
+                
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <!-- Responsive Pesan Sekarang Button -->
+                    <button class="bg-gradient-to-r from-nature-green to-forest-green text-white text-sm px-4 py-2 sm:text-base sm:px-6 sm:py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Pesan Sekarang
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2">
+                        <svg id="hamburger-icon" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="close-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-green/95 border-t border-gray-300">
+                    <a href="#beranda" class="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Beranda</a>
+                    <a href="#tentang" class="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Tentang</a>
+                    <a href="#paket" class="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Paket Wisata</a>
+                    <a href="#galeri" class="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Galeri</a>
+                    <a href="#kontak" class="block px-3 py-2 text-gray-700 hover:text-nature-green hover:bg-gray-50 rounded-md transition-colors font-medium">Kontak</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"></div>
+        <div class="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full floating" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-40 left-20 w-16 h-16 bg-white/10 rounded-full floating" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="scroll-fade">
+                <h1 class="text-5xl md:text-7xl font-playfair font-bold text-white mb-6 leading-tight">
+                    Lebih Dekat dengan<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-morning-gold to-sunset-orange">Alam Itu Menyehatkan</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Rasakan pengalaman berkemah yang tak terlupakan di ketinggian 1.670 mdpl dengan panorama 360° yang memukau
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <button class="bg-gradient-to-r from-sunset-orange to-morning-gold text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                        Jelajahi Paket Wisata
+                    </button>
+                    <button class="glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300">
+                        Lihat Virtual Tour
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">1.670</div>
+                    <div class="text-white/80 text-sm">Mdpl</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">360°</div>
+                    <div class="text-white/80 text-sm">Panorama</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
+                    <div class="text-white/80 text-sm">Layanan</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
+                    Mengapa Memilih Taman Langit?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Temukan keajaiban alam di destinasi camping premium dengan fasilitas terlengkap dan pemandangan yang tak terlupakan
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Feature 1 -->
+                <div class="text-center group hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-br from-nature-green to-forest-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-xl transition-all duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12L8 10l2-2 2 2-2 2zM4.93 4.93l1.41 1.41L10 2.69l3.66 3.65 1.41-1.41L10 0 4.93 4.93z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-semibold text-gray-900 mb-4">Panorama View 360°</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sejauh mata memandang, Anda akan disajikan pemandangan alam perbatasan Bandung Selatan & Garut Selatan yang memukau
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="text-center group hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-br from-mountain-blue to-nature-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-xl transition-all duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M6 2l8 0 2 4-2 4-8 0-2-4 2-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-semibold text-gray-900 mb-4">Ketinggian 1.670 Mdpl</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Berkemah di ketinggian yang menawan akan memberikan pengalaman yang tidak biasa dan udara segar pegunungan
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="text-center group hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-br from-sage-green to-forest-green rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-xl transition-all duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-playfair font-semibold text-gray-900 mb-4">Udara Sejuk</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nikmati udara sejuk ditemani secangkir kopi panas, dan lupakan rutinitas Anda untuk sejenak di alam bebas
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Facilities -->
+            <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <h3 class="text-3xl font-playfair font-bold text-gray-900 mb-4">Fasilitas Umum</h3>
+                    <p class="text-gray-600 text-lg">Berkemah menjadi lebih mudah dan seru dengan fasilitas lengkap kami</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <svg class="w-6 h-6 text-nature-green" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-medium">Warung</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <svg class="w-6 h-6 text-nature-green" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-medium">Toilet</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <svg class="w-6 h-6 text-nature-green" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-medium">Parkir</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <svg class="w-6 h-6 text-nature-green" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 font-medium">Instagramable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities/Packages Section -->
+    <section id="paket" class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
+                    Paket Wisata Kami
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Pilih pengalaman camping yang sesuai dengan kebutuhan dan budget Anda. Setiap paket dirancang untuk memberikan pengalaman terbaik
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
+                    <div class="relative h-64 bg-gradient-to-br from-nature-green to-forest-green">
+                        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Medium Camping" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Populer
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-playfair font-bold text-gray-900 mb-2">Medium Camping</h3>
+                        <p class="text-gray-600 mb-4">Pengalaman mendaki dan berkemah di atas bukit dengan fasilitas lengkap dan pemandangan memukau</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-2xl font-bold text-nature-green">IDR 550,000</div>
+                            <div class="text-gray-500">/per malam</div>
+                        </div>
+                        <div class="flex items-center space-x-4 text-sm text-gray-600 mb-6">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Max. 4 Orang
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                Luas: 5m²
+                            </span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-nature-green to-forest-green text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
+                    <div class="relative h-64 bg-gradient-to-br from-mountain-blue to-nature-green">
+                        <img src="https://images.unsplash.com/photo-1487730116645-74489c95b41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Private Camping" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-playfair font-bold text-gray-900 mb-2">Camping Private</h3>
+                        <p class="text-gray-600 mb-4">Eksklusivitas di atas bukit dengan pemandangan privat dan fasilitas premium untuk pengalaman tak terlupakan</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-2xl font-bold text-nature-green">IDR 700,000</div>
+                            <div class="text-gray-500">/per malam</div>
+                        </div>
+                        <div class="flex items-center space-x-4 text-sm text-gray-600 mb-6">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Max. 4 Orang
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                Luas: 5m²
+                            </span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-nature-green to-forest-green text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift group">
+                    <div class="relative h-64 bg-gradient-to-br from-sunset-orange to-morning-gold">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Sunrise Camping" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Sunrise
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-playfair font-bold text-gray-900 mb-2">Sunrise Camping</h3>
+                        <p class="text-gray-600 mb-4">Nikmati keindahan matahari terbit di atas bukit dengan spot terbaik untuk menyaksikan golden hour</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-2xl font-bold text-nature-green">IDR 650,000</div>
+                            <div class="text-gray-500">/per malam</div>
+                        </div>
+                        <div class="flex items-center space-x-4 text-sm text-gray-600 mb-6">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Max. 4 Orang
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                Luas: 5m²
+                            </span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-nature-green to-forest-green text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300">
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-nature-green to-forest-green text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Lihat Semua Paket
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
+                    Galeri Taman Langit
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Saksikan keindahan alam dan momen berharga para pengunjung di destinasi camping terbaik di Pangalengan
+                </p>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- Left Column - Large Image -->
+                <div class="w-full">
+                    <img src="https://images.unsplash.com/photo-1537905569824-f89f14cceb68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Panoramic Night View with Camping Tent" 
+                         class="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                </div>
+                
+                <!-- Right Column - Grid of Smaller Images -->
+                <div class="grid grid-cols-2 gap-4 h-[400px] lg:h-[500px]">
+                    <!-- Top Row -->
+                    <div class="h-full">
+                        <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Orange Camping Tent" 
+                             class="w-full h-[190px] lg:h-[240px] object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                    </div>
+                    <div class="h-full">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Misty Forest Path" 
+                             class="w-full h-[190px] lg:h-[240px] object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                    </div>
+                    
+                    <!-- Bottom Row -->
+                    <div class="h-full">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Mountain Sunrise View" 
+                             class="w-full h-[190px] lg:h-[240px] object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                    </div>
+                    <div class="h-full">
+                        <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Cozy Campfire Evening" 
+                             class="w-full h-[190px] lg:h-[240px] object-cover rounded-2xl hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="bg-gradient-to-r from-nature-green to-forest-green text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Lihat Galeri Lengkap
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
+                    Ini Kata Mereka!
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Dengarkan pengalaman nyata dari para pengunjung yang telah merasakan keajaiban Taman Langit Pangalengan
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-nature-green to-forest-green rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            S
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Sony Fatkhurohman</h4>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Untuk orang daerah bandung disarankan lebih baik menginap untuk akhir pekan agar bisa melihat matahari terbit dan merasakan suasana pagi hari di ketinggian gunung."
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-mountain-blue to-nature-green rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            N
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Noer Hidayat</h4>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Mantap, ga nyesel pagi sampai sana, apalagi yang glamping recommended. Area piknik yang sejuk dan pemandangan yang luar biasa."
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-sunset-orange to-morning-gold rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            Y
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Yulia Lestari</h4>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Untuk yang suka mengejar sunrise, tempat ini cocok banget! Ga perlu terlalu jauh dari Jakarta. Fasilitas lengkap dan nyaman untuk keluarga."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="kontak" class="py-20 bg-gradient-to-r from-nature-green via-forest-green to-sage-green relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 bg-mountain-pattern opacity-10"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
+                Siap untuk Petualangan Anda?
+            </h2>
+            <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+                Jangan tunggu lagi! Rasakan pengalaman camping yang tak terlupakan di Taman Langit Pangalengan. Book sekarang dan dapatkan harga terbaik.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
+                <button class="bg-white text-nature-green px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    Pesan Sekarang
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-nature-green transition-all duration-300">
+                    Hubungi Kami
+                </button>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="grid md:grid-cols-3 gap-8 text-white">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Email</h4>
+                    <p class="text-white/80">info@tamanlangitpangalengan.com</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">WhatsApp</h4>
+                    <p class="text-white/80">+62 811-2131-220</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Lokasi</h4>
+                    <p class="text-white/80">Kp. Puncak Mulya, Pangalengan, Bandung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-nature-green to-forest-green rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12L8 10l2-2 2 2-2 2zM4.93 4.93l1.41 1.41L10 2.69l3.66 3.65 1.41-1.41L10 0 4.93 4.93z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-playfair font-bold">Taman Langit Pangalengan</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Destinasi camping premium di ketinggian 1.670 mdpl dengan panorama 360° yang memukau. Rasakan pengalaman alam yang tak terlupakan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-nature-green transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-nature-green transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-nature-green transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.219-5.175 1.219-5.175s-.219-.438-.219-1.085c0-1.016.592-1.775 1.329-1.775.626 0 .929.469.929 1.032 0 .628-.399 1.569-.606 2.441-.173.731.367 1.329 1.096 1.329 1.315 0 2.326-1.386 2.326-3.387 0-1.77-1.270-3.009-3.084-3.009-2.105 0-3.341 1.579-3.341 3.208 0 .635.244 1.316.549 1.686.06.073.069.137.051.212-.056.235-.18.733-.204.835-.032.134-.108.162-.249.098-1.134-.528-1.844-2.188-1.844-3.521 0-2.332 1.693-4.475 4.879-4.475 2.562 0 4.553 1.825 4.553 4.263 0 2.543-1.604 4.588-3.834 4.588-.748 0-1.453-.389-1.693-.854 0 0-.371 1.418-.461 1.766-.167.646-.615 1.459-.916 1.95C9.595 23.618 10.763 24.001 12.017 24.001c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-nature-green transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Menu</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#beranda" class="hover:text-white transition-colors">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#paket" class="hover:text-white transition-colors">Paket Wisata</a></li>
+                        <li><a href="#galeri" class="hover:text-white transition-colors">Galeri</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informasi</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2024 Taman Langit Pangalengan. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const hamburgerIcon = document.getElementById('hamburger-icon');
+                    const closeIcon = document.getElementById('close-icon');
+                    
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    // Toggle mobile menu visibility
+                    mobileMenu.classList.toggle('hidden');
+                    
+                    // Toggle icons
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = event.target.closest('nav');
+                if (!isClickInsideNav && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    hamburgerIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-white/95');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.add('bg-white/90');
+                nav.classList.remove('bg-white/95');
+            }
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-fade');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
