@@ -80,6 +80,233 @@
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
+
+        /* Booking Widget Styles */
+        .booking-widget {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .booking-widget:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking-input {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .booking-input:focus {
+            border-color: #2D5016;
+            box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .guest-selector {
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .guest-selector.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Guest arrow alignment and dropdown visual refinements */
+        #guest-selector { position: relative; padding-right: 2.5rem; }
+        #guest-arrow {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease;
+            pointer-events: none;
+        }
+        #guest-arrow.rotate-180 { transform: translateY(-50%) rotate(180deg); }
+
+        /* Dropdown panel styling for a clean, professional look */
+        .guest-selector {
+            background: #ffffff;
+            border: 1px solid rgba(17, 24, 39, 0.08); /* gray-900 @ 8% */
+            box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+            border-radius: 16px;
+            min-width: 260px;
+        }
+        .guest-selector::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-top: 1px solid rgba(17, 24, 39, 0.08);
+            border-left: 1px solid rgba(17, 24, 39, 0.08);
+            transform: rotate(45deg);
+        }
+        .guest-dropdown-section { padding: 12px 16px; }
+        .guest-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .guest-label { color: #111827; font-weight: 600; }
+        .guest-stepper { display: flex; align-items: center; gap: 10px; }
+        .stepper-btn {
+            width: 32px; height: 32px; border-radius: 9999px;
+            border: 1px solid #e5e7eb; /* gray-200 */
+            background: #f9fafb; /* gray-50 */
+            color: #374151; /* gray-700 */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .stepper-btn:hover { background: #2D5016; color: #ffffff; border-color: #2D5016; }
+        .count-badge { min-width: 28px; text-align: center; font-weight: 600; color: #111827; }
+        .guest-divider { height: 1px; background: #e5e7eb; margin: 8px 16px; }
+
+        .search-btn {
+            background: linear-gradient(135deg, #2D5016 0%, #4A7C59 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(45, 80, 22, 0.3);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
+        }
+
+        .search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .search-btn:hover::before {
+            left: 100%;
+        }
+
+        .availability-status {
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .booking-widget {
+                margin: 0 1rem;
+                padding: 1.5rem;
+            }
+
+            .booking-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .date-inputs {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+
+            .guest-input {
+                grid-column: span 2;
+            }
+
+            .search-btn {
+                grid-column: span 2;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .booking-widget {
+                margin: 0 0.5rem;
+                padding: 1rem;
+            }
+
+            .date-inputs {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .guest-input {
+                grid-column: span 1;
+            }
+
+            .search-btn {
+                grid-column: span 1;
+                margin-top: 0.5rem;
+            }
+
+            .booking-widget h3 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Animation delays for staggered effect */
+        .booking-input:nth-child(1) { animation-delay: 0.1s; }
+        .booking-input:nth-child(2) { animation-delay: 0.2s; }
+        .booking-input:nth-child(3) { animation-delay: 0.3s; }
+        .search-btn { animation-delay: 0.4s; }
+
+        .fade-in-stagger {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        /* Hero title: prevent truncation and improve readability */
+        .hero-title {
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        /* Improve date input icon contrast on light backgrounds */
+        .booking-input + div .input-icon svg {
+            color: #4b5563; /* gray-600 */
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+        }
+
+        /* Ensure enough spacing below booking widget before about section */
+        .hero-bg + section {
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body class="font-inter text-gray-800 bg-gray-50">
@@ -135,7 +362,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="beranda" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="beranda" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-24 md:pt-32 pb-24 md:pb-32">
         <!-- Floating Elements -->
         <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating"></div>
         <div class="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full floating" style="animation-delay: 1s;"></div>
@@ -143,7 +370,7 @@
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="scroll-fade">
-                <h1 class="text-5xl md:text-7xl font-playfair font-bold text-white mb-6 leading-tight">
+                <h1 class="text-5xl md:text-7xl font-playfair font-bold text-white mb-6 leading-snug md:leading-tight break-words hero-title">
                     Lebih Dekat dengan<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-morning-gold to-sunset-orange">Alam Itu Menyehatkan</span>
                 </h1>
@@ -157,6 +384,125 @@
                     <button class="glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300">
                         Lihat Virtual Tour
                     </button>
+                </div>
+            </div>
+            
+            <!-- Booking Widget -->
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="booking-widget rounded-3xl p-6 md:p-8 shadow-2xl fade-in-stagger">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl md:text-3xl font-playfair font-bold text-gray-800 mb-2">Pesan Sekarang</h3>
+                        <p class="text-gray-600">Pilih tanggal dan jumlah tamu untuk pengalaman tak terlupakan</p>
+                    </div>
+                    
+                    <div class="booking-grid grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <!-- Check-in Date -->
+                        <div class="relative fade-in-stagger">
+                            <label class="block text-gray-700 text-sm font-medium mb-2">Check-in</label>
+                            <div class="relative">
+                                <input type="date" id="checkin-date" 
+                                       class="booking-input w-full bg-white border border-gray-300 rounded-xl pl-4 pr-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nature-green focus:border-transparent transition-all duration-300"
+                                       min="" />
+                                <!-- Removed custom icon to avoid duplicate with native date picker -->
+                            </div>
+                        </div>
+                        
+                        <!-- Check-out Date -->
+                        <div class="relative fade-in-stagger">
+                            <label class="block text-gray-700 text-sm font-medium mb-2">Check-out</label>
+                            <div class="relative">
+                                <input type="date" id="checkout-date" 
+                                       class="booking-input w-full bg-white border border-gray-300 rounded-xl pl-4 pr-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nature-green focus:border-transparent transition-all duration-300"
+                                       min="" />
+                                <!-- Removed custom icon to avoid duplicate with native date picker -->
+                            </div>
+                        </div>
+                        
+                        <!-- Guest Count -->
+                        <div class="guest-input relative fade-in-stagger">
+                            <label class="block text-gray-700 text-sm font-medium mb-2">Jumlah Tamu</label>
+                            <div class="relative">
+                                <button type="button" id="guest-selector" 
+                                        class="booking-input w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-800 text-left focus:outline-none focus:ring-2 focus:ring-nature-green focus:border-transparent transition-all duration-300">
+                                    <span id="guest-display">2 Tamu</span>
+                                    <svg class="w-5 h-5 text-gray-400" id="guest-arrow" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Guest Dropdown -->
+                                <div id="guest-dropdown" class="guest-selector absolute top-full right-0 left-auto mt-2 z-50">
+                                    <div class="guest-dropdown-section space-y-4">
+                                        <div class="guest-row">
+                                            <span class="guest-label">Dewasa</span>
+                                            <div class="guest-stepper">
+                                                <button type="button" class="stepper-btn" onclick="changeGuestCount('adults', -1)">
+                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                                    </svg>
+                                                </button>
+                                                <span id="adults-count" class="count-badge">2</span>
+                                                <button type="button" class="stepper-btn" onclick="changeGuestCount('adults', 1)">
+                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="guest-row">
+                                            <span class="guest-label">Anak-anak</span>
+                                            <div class="guest-stepper">
+                                                <button type="button" class="stepper-btn" onclick="changeGuestCount('children', -1)">
+                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                                    </svg>
+                                                </button>
+                                                <span id="children-count" class="count-badge">0</span>
+                                                <button type="button" class="stepper-btn" onclick="changeGuestCount('children', 1)">
+                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Search Button -->
+                        <div class="flex items-end fade-in-stagger">
+                            <button type="button" id="search-availability" 
+                                    class="search-btn w-full text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Cari</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Availability Status -->
+                    <div id="availability-status" class="hidden">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                <span class="text-white font-medium">Tersedia untuk tanggal yang dipilih</span>
+                            </div>
+                            <p class="text-white/80 text-sm mt-2">Silakan lanjutkan dengan pemesanan atau hubungi kami untuk informasi lebih lanjut.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Unavailable Status -->
+                    <div id="unavailable-status" class="hidden">
+                        <div class="bg-red-500/20 backdrop-blur-sm rounded-xl p-4 border border-red-400/30">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                <span class="text-white font-medium">Tidak tersedia untuk tanggal yang dipilih</span>
+                            </div>
+                            <p class="text-white/80 text-sm mt-2">Mohon pilih tanggal lain atau hubungi kami untuk alternatif lainnya.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -187,7 +533,7 @@
 
     <!-- About Section -->
     <section id="tentang" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 md:mt-24">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">
                     Mengapa Memilih Taman Langit?
@@ -753,6 +1099,179 @@
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
+
+        // Booking Widget Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize booking widget
+            initializeBookingWidget();
+        });
+
+        function initializeBookingWidget() {
+            const checkinInput = document.getElementById('checkin-date');
+            const checkoutInput = document.getElementById('checkout-date');
+            const guestSelector = document.getElementById('guest-selector');
+            const guestDropdown = document.getElementById('guest-dropdown');
+            const guestArrow = document.getElementById('guest-arrow');
+            const searchButton = document.getElementById('search-availability');
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            checkinInput.min = today;
+            checkoutInput.min = today;
+            
+            // Sample booked dates (in real implementation, this would come from a database)
+            const bookedDates = [
+                '2024-12-25', '2024-12-26', '2024-12-31', '2025-01-01',
+                '2025-01-15', '2025-01-16', '2025-02-14', '2025-02-15'
+            ];
+            
+            // Guest count variables
+            let adults = 2;
+            let children = 0;
+            
+            // Update guest display
+            function updateGuestDisplay() {
+                const totalGuests = adults + children;
+                const guestText = totalGuests === 1 ? '1 Tamu' : `${totalGuests} Tamu`;
+                document.getElementById('guest-display').textContent = guestText;
+                document.getElementById('adults-count').textContent = adults;
+                document.getElementById('children-count').textContent = children;
+            }
+            
+            // Ensure dropdown starts hidden
+            guestDropdown.classList.remove('active');
+            guestDropdown.classList.add('hidden');
+
+            // Guest selector toggle using 'active' class for transitions
+            guestSelector.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isActive = guestDropdown.classList.contains('active');
+                if (isActive) {
+                    guestDropdown.classList.remove('active');
+                    guestDropdown.classList.add('hidden');
+                } else {
+                    guestDropdown.classList.remove('hidden');
+                    guestDropdown.classList.add('active');
+                }
+                guestArrow.classList.toggle('rotate-180');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!guestSelector.contains(e.target) && !guestDropdown.contains(e.target)) {
+                    guestDropdown.classList.remove('active');
+                    guestDropdown.classList.add('hidden');
+                    guestArrow.classList.remove('rotate-180');
+                }
+            });
+            
+            // Check-in date change handler
+            checkinInput.addEventListener('change', function() {
+                const checkinDate = new Date(this.value);
+                const nextDay = new Date(checkinDate);
+                nextDay.setDate(nextDay.getDate() + 1);
+                
+                // Set minimum checkout date to day after checkin
+                checkoutInput.min = nextDay.toISOString().split('T')[0];
+                
+                // Clear checkout if it's before new minimum
+                if (checkoutInput.value && new Date(checkoutInput.value) <= checkinDate) {
+                    checkoutInput.value = '';
+                }
+                
+                // Check availability for selected date
+                checkDateAvailability();
+            });
+            
+            // Check-out date change handler
+            checkoutInput.addEventListener('change', function() {
+                checkDateAvailability();
+            });
+            
+            // Check date availability
+            function checkDateAvailability() {
+                const checkinDate = checkinInput.value;
+                const checkoutDate = checkoutInput.value;
+                
+                if (!checkinDate || !checkoutDate) return;
+                
+                const availabilityStatus = document.getElementById('availability-status');
+                const unavailableStatus = document.getElementById('unavailable-status');
+                
+                // Check if any date in range is booked
+                const isUnavailable = isDateRangeBooked(checkinDate, checkoutDate, bookedDates);
+                
+                if (isUnavailable) {
+                    availabilityStatus.classList.add('hidden');
+                    unavailableStatus.classList.remove('hidden');
+                } else {
+                    unavailableStatus.classList.add('hidden');
+                    availabilityStatus.classList.remove('hidden');
+                }
+            }
+            
+            // Check if date range contains booked dates
+            function isDateRangeBooked(startDate, endDate, bookedDates) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+                
+                for (let date of bookedDates) {
+                    const bookedDate = new Date(date);
+                    if (bookedDate >= start && bookedDate < end) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            
+            // Search availability button
+            searchButton.addEventListener('click', function() {
+                const checkinDate = checkinInput.value;
+                const checkoutDate = checkoutInput.value;
+                
+                if (!checkinDate || !checkoutDate) {
+                    alert('Mohon pilih tanggal check-in dan check-out');
+                    return;
+                }
+                
+                if (new Date(checkoutDate) <= new Date(checkinDate)) {
+                    alert('Tanggal check-out harus setelah tanggal check-in');
+                    return;
+                }
+                
+                // Animate button
+                this.classList.add('animate-pulse');
+                setTimeout(() => {
+                    this.classList.remove('animate-pulse');
+                    checkDateAvailability();
+                }, 1000);
+            });
+            
+            // Initialize guest display
+            updateGuestDisplay();
+        }
+        
+        // Guest count change function (called from HTML)
+        function changeGuestCount(type, change) {
+            if (type === 'adults') {
+                const newCount = parseInt(document.getElementById('adults-count').textContent) + change;
+                if (newCount >= 1 && newCount <= 10) {
+                    document.getElementById('adults-count').textContent = newCount;
+                }
+            } else if (type === 'children') {
+                const newCount = parseInt(document.getElementById('children-count').textContent) + change;
+                if (newCount >= 0 && newCount <= 8) {
+                    document.getElementById('children-count').textContent = newCount;
+                }
+            }
+            
+            // Update display
+            const adults = parseInt(document.getElementById('adults-count').textContent);
+            const children = parseInt(document.getElementById('children-count').textContent);
+            const totalGuests = adults + children;
+            const guestText = totalGuests === 1 ? '1 Tamu' : `${totalGuests} Tamu`;
+            document.getElementById('guest-display').textContent = guestText;
+        }
     </script>
 </body>
 </html>
