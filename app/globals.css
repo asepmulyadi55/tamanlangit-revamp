@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
+/* Design Tokens per HANDOFF_NOTES */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --tlp-forest: #2E7D32;
+  --tlp-soft: #6BBF59;
+  --tlp-beige: #F5EBD0;
+  --tlp-surface: #FAFAF7;
+  --tlp-slate: #1F2937;
+  --dark-surface: #0F172A;
+  --dark-text: #E5E7EB;
+
+  --background: var(--tlp-surface);
+  --foreground: var(--tlp-slate);
+  --muted-foreground: #6b7280; /* slate-500 */
+  --theme-text: var(--foreground);
+  /* Slightly darker than page background for cards in light mode */
+  --card-bg: color-mix(in oklab, var(--color-white) 70%, transparent); /* slate-100 */
+  /* Footer background: slightly darker than page in light mode */
+  --footer-bg: color-mix(in oklab, var(--color-white) 75%, transparent); /* approx slate-200 */
+  color-scheme: light;
 }
 
 @theme inline {
@@ -12,15 +28,51 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Class-based dark mode via <html class="dark"> */
+html.dark {
+  --background: var(--dark-surface);
+  --foreground: var(--dark-text);
+  --muted-foreground: #94a3b8; /* slate-400 */
+  /* Use background color for text in dark mode as requested */
+  --theme-text: var(--background);
+  /* Slightly lighter than dark surface for cards in dark mode */
+  --card-bg: #1F2937; /* slate-800 */
+  /* Footer background: slightly brighter than dark surface in dark mode */
+  --footer-bg: color-mix(in oklab, var(--tlp-slate) 65%, transparent); /* slate-700 */
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utilities aligned with handoff */
+.btn-brand {
+  @apply inline-flex items-center justify-center rounded-2xl px-5 py-3 font-medium text-white bg-[var(--tlp-forest)] shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:opacity-95 transition;
+}
+
+.section-spacing {
+  @apply py-16 md:py-20;
+}
+
+.card-base {
+  @apply rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] p-4 md:p-6;
+  background: var(--card-bg);
+}
+
+.meta-text {
+  @apply text-sm;
+  color: var(--muted-foreground);
+}
+
+/* Theme text utilities */
+.text-theme {
+  color: var(--theme-text);
+}
+.text-muted {
+  color: var(--muted-foreground);
+}
+input::placeholder {
+  color: var(--muted-foreground);
 }
