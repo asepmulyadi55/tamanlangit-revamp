@@ -45,10 +45,39 @@ export default function SiteScripts() {
     );
     document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => obs.observe(el));
 
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuToggleHandler = () => {
+      if (!mobileMenu || !menuBtn) return;
+      // Toggle hidden class
+      mobileMenu.classList.toggle("hidden");
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    };
+    menuBtn?.addEventListener("click", menuToggleHandler);
+    // Close on link click
+    const mobileLinks = mobileMenu?.querySelectorAll<HTMLAnchorElement>("a");
+    const closeMenu = () => {
+      if (!mobileMenu || !menuBtn) return;
+      mobileMenu.classList.add("hidden");
+      menuBtn.setAttribute("aria-expanded", "false");
+    };
+    mobileLinks?.forEach((a) => a.addEventListener("click", closeMenu));
+    // Close on Escape
+    const escHandler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", escHandler);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       toggleBtn?.removeEventListener("click", toggleHandler);
       obs.disconnect();
+      // Cleanup mobile menu handlers
+      menuBtn?.removeEventListener("click", menuToggleHandler);
+      mobileLinks?.forEach((a) => a.removeEventListener("click", closeMenu));
+      document.removeEventListener("keydown", escHandler);
     };
   }, []);
 
