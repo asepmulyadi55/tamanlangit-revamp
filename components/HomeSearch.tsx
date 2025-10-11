@@ -8,6 +8,7 @@ export default function HomeSearch() {
     const err = document.getElementById("searchError") as HTMLElement | null;
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      if (err) err.textContent = "";
       const ci = (document.getElementById("checkIn") as HTMLInputElement)?.value;
       const co = (document.getElementById("checkOut") as HTMLInputElement)?.value;
       const g = (document.getElementById("guests") as HTMLInputElement)?.value || "1";

@@ -31,7 +31,8 @@ export default function SiteScripts() {
       const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       applyTheme(pref === "dark" || (pref === "system" && systemDark));
     })();
-    toggleBtn?.addEventListener("click", () => applyTheme(!root.classList.contains("dark")));
+    const toggleHandler = () => applyTheme(!root.classList.contains("dark"));
+    toggleBtn?.addEventListener("click", toggleHandler);
 
     // Reveal on scroll
     const obs = new IntersectionObserver(
@@ -46,7 +47,7 @@ export default function SiteScripts() {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      toggleBtn?.removeEventListener("click", () => {});
+      toggleBtn?.removeEventListener("click", toggleHandler);
       obs.disconnect();
     };
   }, []);
