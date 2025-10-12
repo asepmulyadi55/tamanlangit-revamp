@@ -13,31 +13,13 @@ export default function Home() {
 
         <Highlights />
 
-        <PackageGrid
-          items={[
-            {
-              title: "Package 1",
-              imageSrc: "https://picsum.photos/800/500?random=240",
-              bullets: ["Tenda + Matras", "Api unggun", "Minuman hangat"],
-              price: "Rp 400.000",
-              ctaHref: "/kontak",
-            },
-            {
-              title: "Package 2",
-              imageSrc: "https://picsum.photos/800/500?random=241",
-              bullets: ["Tenda + Matras", "Api unggun", "Minuman hangat"],
-              price: "Rp 450.000",
-              ctaHref: "/kontak",
-            },
-            {
-              title: "Package 3",
-              imageSrc: "https://picsum.photos/800/500?random=242",
-              bullets: ["Tenda + Matras", "Api unggun", "Minuman hangat"],
-              price: "Rp 500.000",
-              ctaHref: "/kontak",
-            },
-          ]}
-        />
+        <section className="py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 text-center reveal">
+            <h2 className="font-display text-4xl md:text-5xl font-semibold">Dari Blog</h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">Tips camping, peralatan, dan cerita perjalanan.</p>
+            <a href="/blog" className="inline-block mt-6 px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Baca Blog</a>
+          </div>
+        </section>
       </main>
       {/* HomeSearch is now included within SearchPanel to retain behavior */}
     </main>
