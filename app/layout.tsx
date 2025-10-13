@@ -3,6 +3,25 @@ import SiteScripts from "../components/SiteScripts";
 import Navbar from "../components/Navbar";
 import MobileMenu from "../components/MobileMenu";
 import Footer from "../components/Footer";
+import { Metadata } from "next";
+import { Inter, Cormorant_Garamond } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-inter",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-display",
+});
+
+export const metadata: Metadata = {
+  title: "Taman Langit",
+  description: "Taman Langit - Tempat Wisata Terbaik",
+};
 
 export default function RootLayout({
   children,
@@ -10,16 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Taman Langit</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="id" className={`scroll-smooth ${inter.variable} ${cormorant.variable}`}>
       <body className="bg-[#F3EFE6] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
         <Navbar />
         <MobileMenu />

@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 export default function AboutIntro() {
   return (
     <section className="py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-8 items-center">
-        <img src="https://picsum.photos/900/650?random=201" alt="Tentang Kami" className="w-full h-80 object-cover rounded-2xl shadow-soft reveal" />
+        <Image src="https://picsum.photos/900/650?random=201" alt="Tentang Kami" width={900} height={650} className="w-full h-80 object-cover rounded-2xl shadow-soft reveal" />
         <div className="reveal">
           <h1 className="font-display text-4xl md:text-5xl font-semibold">Tentang Kami</h1>
           <p className="mt-4 text-slate-700 dark:text-slate-300">Kami menghadirkan pengalaman camping yang nyaman, aman, dan ramah keluarga di Pangalengan. Visi kami adalah membuat setiap tamu merasakan ketenangan alam dan pulang membawa cerita baru.</p>

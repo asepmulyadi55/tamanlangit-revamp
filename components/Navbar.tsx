@@ -1,15 +1,17 @@
 "use client";
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <header id="nav" className="fixed inset-x-0 top-0 z-50 bg-[#F3EFE6]/85 dark:bg-slate-900/70 backdrop-blur transition-shadow">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <a href="/" className="font-semibold tracking-wide">Taman Langit</a>
+        <Link href="/" className="font-semibold tracking-wide">Taman Langit</Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <a href="/tentang-kami" className="hover:opacity-80">Tentang Kami</a>
-          <a href="/paket-wisata" className="hover:opacity-80">Paket Wisata</a>
-          <a href="/blog" className="hover:opacity-80">Blog</a>
-          <a href="/faq" className="hover:opacity-80">FAQ</a>
-          <a href="/kontak" className="hover:opacity-80">Kontak</a>
+          <Link href="/tentang-kami" className="hover:opacity-80">Tentang Kami</Link>
+          <Link href="/paket-wisata" className="hover:opacity-80">Paket Wisata</Link>
+          <Link href="/blog" className="hover:opacity-80">Blog</Link>
+          <Link href="/faq" className="hover:opacity-80">FAQ</Link>
+          <Link href="/kontak" className="hover:opacity-80">Kontak</Link>
         </nav>
         {/* Mobile menu button */}
         <button id="menuBtn" className="md:hidden rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">

@@ -1,7 +1,7 @@
 import SearchPanel from "../components/SearchPanel";
 import Hero from "../components/Hero";
 import Highlights from "../components/Highlights";
-import PackageGrid from "../components/PackageGrid";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 text-center reveal">
             <h2 className="font-display text-4xl md:text-5xl font-semibold">Dari Blog</h2>
             <p className="mt-3 text-slate-600 dark:text-slate-300">Tips camping, peralatan, dan cerita perjalanan.</p>
-            <a href="/blog" className="inline-block mt-6 px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Baca Blog</a>
+            <Link href="/blog" className="inline-block mt-6 px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Baca Blog</Link>
           </div>
         </section>
       </main>
