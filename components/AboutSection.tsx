@@ -1,40 +1,33 @@
+"use client";
+import React from "react";
 import Image from "next/image";
-import type { AboutSectionProps } from "../types/components";
+import Link from "next/link";
+import { useTranslations, useLocale } from 'next-intl';
 
-export default function AboutSection({
-  title,
-  titleTag = "h2",
-  description,
-  descClassName,
-  imageSrc,
-  imageAlt,
-  imageWidth,
-  imageHeight,
-  imageClassName,
-  bullets,
-  ctaHref,
-  ctaText,
-}: AboutSectionProps) {
-  const TitleTag = titleTag;
+export default function AboutSection() {
+  const t = useTranslations('highlights');
+  const locale = useLocale();
+
   return (
     <section className="py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-8 items-center">
-        <Image src={imageSrc} alt={imageAlt} width={imageWidth} height={imageHeight} className={imageClassName} />
-        <div className="reveal">
-          <TitleTag className="font-display text-4xl md:text-5xl font-semibold">{title}</TitleTag>
-          <p className={`mt-4 ${descClassName}`}>{description}</p>
-          {bullets && bullets.length > 0 ? (
-            <ul className="mt-6 list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300">
-              {bullets.map((b, i) => (
-                <li key={i}>{b}</li>
-              ))}
-            </ul>
-          ) : null}
-          {ctaHref && ctaText ? (
-            <a href={ctaHref} className="inline-block mt-6 px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">
-              {ctaText}
-            </a>
-          ) : null}
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
+          <div className="reveal">
+            <h2 className="font-display text-4xl md:text-5xl font-semibold">{t('about.title')}</h2>
+            <p className="mt-4 text-slate-600 dark:text-slate-300">{t('about.description')}</p>
+            <Link href={`/${locale}/tentang-kami`} className="inline-block mt-6 px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">
+              {t('about.ctaText')}
+            </Link>
+          </div>
+          <div className="reveal">
+            <Image 
+              src="/images/about us.jpg" 
+              alt={t('about.imageAlt')} 
+              width={800} 
+              height={600} 
+              className="w-full h-72 object-cover rounded-2xl shadow-soft" 
+            />
+          </div>
         </div>
       </div>
     </section>
