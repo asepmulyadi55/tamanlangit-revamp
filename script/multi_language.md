@@ -1,46 +1,32 @@
 Title: Add i18n with next-intl (App Router) using STATIC locale content first (no CMS)
 
 Goal
-Enable locale-prefixed routing (`/id/*`, `/en/*`) and translate UI chrome via `next-intl`. Serve dynamic sections (FAQ, Packages, Blog) from simple per-locale static files for now. Keep pixel-perfect visuals and DOM/Tailwind exactly as-is. The existing language dropdown in `Navbar.tsx` must switch locales while preserving the current path and query.
+Enable locale-prefixed routing (`/id/*`, `/en/*`) and translate UI chrome via `next-intl`. Serve dynamic sections (FAQ, Packages, Blog) from per-locale static files under `/content/{id,en}`. Keep pixel-perfect visuals and current DOM/Tailwind exactly as-is. Wire the existing language dropdown in `Navbar.tsx` to switch locales while preserving the current path and query. No CMS integration yet.
 
-Key Requirements
-- Locales: `id` (default), `en`; App Router only.
-- Do NOT change styling, spacing, or element structure (except what `next-intl` strictly needs).
-- UI chrome (nav labels, headings, form labels, button text) comes from `messages/{locale}.json`.
-- Dynamic content (FAQ/Packages/Blog) comes from static files under `content/{id,en}/…` (not from messages).
-- Language switch must replace only the first URL segment and keep the rest of the path + query.
+Assumptions
+- Next.js App Router + TypeScript + Tailwind are already set up
+- Locales: `id` (default) and `en`
+- A language dropdown already exists in `Navbar.tsx`
 
 Implement
-1) Routing & Provider
-   - Use `next-intl` with locale-prefixed routing (middleware) and a provider in `app/[locale]/layout.tsx`.
-   - `next.config.js`: ensure `i18n.locales = ['id','en']`, `defaultLocale = 'id'`, `localeDetection = true`.
-
-2) Messages (UI chrome)
-   - Create `/messages/id.json` and `/messages/en.json` containing ONLY UI strings already present visually (nav items, section titles, form labels, button text). Keys should be short, stable, and grouped (e.g., `nav.about`, `search.checkin`, `hero.title`).
-   - Replace hardcoded UI strings in pages/components with `next-intl` lookups, without altering the markup or classes.
-
-3) Static content (temporary data source)
-   - Create simple locale folders:
-     - `content/id/faq.json`, `content/en/faq.json`
-     - `content/id/packages.json`, `content/en/packages.json`
-     - `content/id/blog/*.md`, `content/en/blog/*.md` (same slug per locale)
-   - Add tiny server-side loaders in `lib/` to read those files by `params.locale`, with graceful fallback to `id` if a file is missing.
-   - Pages under `app/[locale]/faq`, `app/[locale]/paket-wisata`, `app/[locale]/blog` must read data through those loaders; render using the existing HTML structure and Tailwind classes.
-
-4) Navbar language dropdown
-   - Wire the existing dropdown to replace the first URL segment (`/id/...` ↔ `/en/...`) and preserve the rest (path + query) using App Router navigation. Do not change the visual component.
+1) Configure locale-prefixed routing with next-intl middleware and set up a next-intl provider in `app/[locale]/layout.tsx`.
+2) Create UI message files `/messages/id.json` and `/messages/en.json` containing **UI chrome only** (nav items, headings, form labels, button text). Do **not** include dynamic content.
+3) Replace hardcoded UI chrome strings in pages/components with next-intl lookups (keep existing markup and Tailwind classes unchanged).
+4) Create a static content layer under `/content/{id,en}`:
+   - `faq.json` (array of Q/A items)
+   - `packages.json` (array of packages with title, bullets, price, slug, optional cover)
+   - `blog/*.md` for posts (one file per post per locale; same slug per locale; include front-matter for slug/title/date/excerpt/cover)
+5) Add minimal server-side loaders that read the static files per locale with graceful fallback to `id` if a file is missing. Pages in `app/[locale]/faq`, `app/[locale]/paket-wisata`, and `app/[locale]/blog` must consume these loaders and render with the current UI structure.
+6) Wire the existing language dropdown to replace only the first URL segment (`/id` ↔ `/en`) and preserve the remainder of the path and query parameters using App Router navigation. Do not alter the visual component.
+7) Prepare for future CMS: keep the loader API surface stable so it can be swapped later with Strapi/Directus adapters without changing page code or message keys.
 
 Constraints
-- No visual regressions; do not add wrappers or change element order.
+- Do not modify DOM structure or Tailwind classes.
 - Keep `next/link` and `next/image` best practices.
-- Messages JSON must NEVER include dynamic content (FAQ answers, blog text, package descriptions); those live in `content/{locale}/…`.
+- Messages JSON must never contain dynamic content.
 
-Deliverable
-- Locale-prefixed site where:
-  - UI chrome switches between `id`/`en` via `next-intl`.
-  - FAQ/Packages/Blog switch via static per-locale files.
-  - The language dropdown preserves the current route and query.
-  - ESLint/types pass; layout and styling remain identical.
-
-Note (future)
-- This structure must be ready to swap the static loaders with Strapi/Directus adapters later, without touching page/components or message keys.
+Acceptance
+- `/id/*` and `/en/*` render with localized UI chrome via next-intl.
+- FAQ/Packages/Blog switch language based on files in `/content/{id,en}`.
+- Language dropdown switches locale while preserving current route and query.
+- ESLint/types pass and visuals remain identical.
