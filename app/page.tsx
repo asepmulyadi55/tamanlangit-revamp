@@ -10,7 +10,7 @@ export default function Home() {
         <Hero>
           <SearchPanel />
         </Hero>
-
+        
         <Highlights />
 
         <section className="py-16 md:py-20">

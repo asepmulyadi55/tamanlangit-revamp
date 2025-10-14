@@ -1,60 +1,52 @@
-import Image from "next/image";
-import Link from "next/link";
+import AboutSection from "./AboutSection";
+import PackageGrid from "./PackageGrid";
 
 export default function Highlights() {
   return (
     <>
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-8 items-center">
-          <Image src="https://picsum.photos/800/600?random=121" alt="About Image" width={800} height={600} className="w-full h-72 object-cover rounded-2xl shadow-soft reveal" />
-          <div className="reveal">
-            <h2 className="font-display text-4xl md:text-5xl font-semibold">Tentang Kami</h2>
-            <p className="mt-4 text-slate-600 dark:text-slate-300">Taman Langit Pangalengan menghadirkan pengalaman camping yang tenang dengan panorama pegunungan dan udara sejuk.</p>
-            <Link href="/tentang-kami" className="inline-block mt-6 px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Pelajari Lebih Lanjut</Link>
-          </div>
-        </div>
-      </section>
+      <AboutSection
+        title="Tentang Kami"
+        titleTag="h2"
+        description="Taman Langit Pangalengan menghadirkan pengalaman camping yang tenang dengan panorama pegunungan dan udara sejuk."
+        descClassName="text-slate-600 dark:text-slate-300"
+        imageSrc="/images/about us.jpg"
+        imageAlt="About Image"
+        imageWidth={800}
+        imageHeight={600}
+        imageClassName="w-full h-72 object-cover rounded-2xl shadow-soft reveal"
+        ctaHref="/tentang-kami"
+        ctaText="Pelajari Lebih Lanjut"
+      />
 
-      <section className="py-16 md:py-20 bg-white dark:bg-slate-900">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-center">Paket Wisata Unggulan</h2>
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
-            <article className="rounded-3xl border border-black/5 overflow-hidden shadow-soft reveal">
-              <Image src="https://picsum.photos/800/500?random=141" alt="Family Package" width={800} height={500} className="h-44 w-full object-cover" />
-              <div className="p-6">
-                <h3 className="font-semibold text-lg">Family Package</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">Tenda keluarga + sarapan sederhana.</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-semibold">Rp 400.000</span>
-                  <Link href="/paket-wisata" className="px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Lihat</Link>
-                </div>
-              </div>
-            </article>
-            <article className="rounded-3xl border border-black/5 overflow-hidden shadow-soft reveal">
-              <Image src="https://picsum.photos/800/500?random=142" alt="Adventure Package" width={800} height={500} className="h-44 w-full object-cover" />
-              <div className="p-6">
-                <h3 className="font-semibold text-lg">Adventure Package</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">Trekking + api unggun + minuman hangat.</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-semibold">Rp 600.000</span>
-                  <Link href="/paket-wisata" className="px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Lihat</Link>
-                </div>
-              </div>
-            </article>
-            <article className="rounded-3xl border border-black/5 overflow-hidden shadow-soft reveal">
-              <Image src="https://picsum.photos/800/500?random=143" alt="Romantic Package" width={800} height={500} className="h-44 w-full object-cover" />
-              <div className="p-6">
-                <h3 className="font-semibold text-lg">Romantic Package</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">Tenda couple + dekorasi light string.</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-semibold">Rp 550.000</span>
-                  <Link href="/paket-wisata" className="px-4 py-2 rounded-xl bg-tlp-forest text-white hover:opacity-90">Lihat</Link>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      <PackageGrid
+        items={[
+          {
+            title: "Family Package",
+            imageSrc: "/images/package 1.jpg",
+            bullets: ["Tenda keluarga", "Sarapan sederhana"],
+            price: "Rp 400.000",
+            ctaHref: "/paket-wisata",
+          },
+          {
+            title: "Adventure Package",
+            imageSrc: "/images/package 2.jpg",
+            bullets: ["Trekking", "Api unggun", "Minuman hangat"],
+            price: "Rp 600.000",
+            ctaHref: "/paket-wisata",
+          },
+          {
+            title: "Romantic Package",
+            imageSrc: "/images/package 3.jpg",
+            bullets: ["Tenda couple", "Dekorasi light string"],
+            price: "Rp 550.000",
+            ctaHref: "/paket-wisata",
+          },
+        ]}
+        title="Paket Wisata Unggulan"
+        subtitle={undefined}
+        headingTag="h2"
+        sectionClassName="py-16 md:py-20 bg-white dark:bg-slate-900"
+      />
     </>
   );
 }

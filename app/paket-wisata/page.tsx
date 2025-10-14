@@ -7,21 +7,21 @@ export default function Page() {
         items={[
           {
             title: "Package 1",
-            imageSrc: "https://picsum.photos/800/500?random=240",
+            imageSrc: "/images/package-1.jpg",
             bullets: ["Tenda + Matras", "Api unggun", "Minuman hangat"],
             price: "Rp 400.000",
             ctaHref: "/kontak",
           },
           {
             title: "Package 2",
-            imageSrc: "https://picsum.photos/800/500?random=241",
+            imageSrc: "/images/package-2.jpg",
             bullets: ["Tenda + Matras", "Api unggun", "Minuman hangat"],
             price: "Rp 450.000",
             ctaHref: "/kontak",
           },
           {
             title: "Package 3",
-            imageSrc: "https://picsum.photos/800/500?random=242",
+            imageSrc: "/images/package-3.jpg",
             bullets: ["Tenda + Matras", "Api unggun", "Minuman hangat"],
             price: "Rp 500.000",
             ctaHref: "/kontak",

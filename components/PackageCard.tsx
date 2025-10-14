@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PackageCardProps } from "../types/components";
 
-export interface PackageCardProps { title: string; imageSrc: string; bullets: string[]; price: string; ctaHref: string; }
 export default function PackageCard({ title, imageSrc, bullets, price, ctaHref }: PackageCardProps) {
   return (
     <article className="rounded-3xl border border-black/5 overflow-hidden shadow-soft reveal">

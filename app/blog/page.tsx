@@ -1,12 +1,8 @@
 import BlogListItem from "../../components/BlogListItem";
+import { BlogService } from "../../lib/blog";
 
 export default function Page() {
-  const posts = [
-    { href: "/blog/blog-post", title: "Tips Camping untuk Pemula 1", date: "12 Sept 2025", thumbSrc: "https://picsum.photos/120/90?random=300" },
-    { href: "/blog/blog-post", title: "Tips Camping untuk Pemula 2", date: "12 Sept 2025", thumbSrc: "https://picsum.photos/120/90?random=301" },
-    { href: "/blog/blog-post", title: "Tips Camping untuk Pemula 3", date: "12 Sept 2025", thumbSrc: "https://picsum.photos/120/90?random=302" },
-    { href: "/blog/blog-post", title: "Tips Camping untuk Pemula 4", date: "12 Sept 2025", thumbSrc: "https://picsum.photos/120/90?random=303" },
-  ];
+  const posts = BlogService.list();
 
   return (
     <main className="pt-16">
@@ -15,7 +11,7 @@ export default function Page() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-center">Blog</h1>
           <ul className="mt-10 space-y-4">
             {posts.map((p) => (
-              <BlogListItem key={p.thumbSrc} href={p.href} title={p.title} date={p.date} thumbSrc={p.thumbSrc} />
+              <BlogListItem key={p.slug} href={`/blog/${p.slug}`} title={p.title} date={p.date} thumbSrc={p.thumbSrc ?? "https://picsum.photos/120/90"} />
             ))}
           </ul>
         </div>

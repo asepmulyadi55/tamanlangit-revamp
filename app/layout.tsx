@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`scroll-smooth ${inter.variable} ${cormorant.variable}`}>
+    <html lang="id" className={`scroll-smooth ${inter.variable} ${cormorant.variable}`} data-scroll-behavior="smooth">
       <body className="bg-[#F3EFE6] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
         <Navbar />
         <MobileMenu />
