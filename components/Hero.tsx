@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Hero({ children }: { children?: React.ReactNode }) {
   return (
-    <section className="relative min-h-[72vh] flex items-center justify-center">
-      <Image src="/images/hero banner.jpg" alt="Camping Hero" width={1600} height={900} className="absolute inset-0 h-full w-full object-cover" />
+    <section className="relative min-h-[72vh] flex items-center justify-center" role="banner">
+      <Image src="/images/hero banner.jpg" alt="Camping Hero" width={1600} height={900} priority className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/10 dark:from-black/60"></div>
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
         <h1 className="font-display text-5xl md:text-7xl font-semibold text-white drop-shadow-[0_2px_0_rgba(0,0,0,0.2)]">Experience the Beauty of Nature</h1>

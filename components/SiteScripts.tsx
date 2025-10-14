@@ -7,12 +7,6 @@ export default function SiteScripts() {
   const obsRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    // Footer year
-    const yearEl = document.getElementById("year");
-    if (yearEl) {
-      yearEl.textContent = String(new Date().getFullYear());
-    }
-
     // Navbar shadow on scroll
     const nav = document.getElementById("nav");
     const onScroll = () => {
@@ -27,7 +21,6 @@ export default function SiteScripts() {
     const root = document.documentElement;
     const applyTheme = (isDark: boolean) => {
       root.classList.toggle("dark", isDark);
-      if (toggleBtn) toggleBtn.textContent = isDark ? "Light" : "Dark";
       localStorage.setItem("theme", isDark ? "dark" : "light");
     };
     (function initTheme() {

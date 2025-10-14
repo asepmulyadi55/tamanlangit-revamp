@@ -67,7 +67,7 @@ export default function SearchPanel() {
           Search
         </button>
       </form>
-      <p id="searchError" className="mt-2 text-sm text-red-200 md:text-red-300"></p>
+      <p id="searchError" role="alert" aria-live="polite" className="mt-2 text-sm text-red-200 md:text-red-300"></p>
       <HomeSearch />
     </>
   );

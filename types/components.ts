@@ -33,8 +33,10 @@ export interface BlogPostContentProps {
 }
 
 export interface PackageCardProps {
+  id?: string;
   title: string;
   imageSrc: string;
+  imageAlt?: string;
   bullets: string[];
   price: string;
   ctaHref: string;
