@@ -3,15 +3,26 @@ import Link from "next/link";
 import Image from "next/image"
 import { useTranslations, useLocale } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const t = useTranslations('navbar');
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Handle language change
+  const handleLanguageChange = (newLocale: string) => {
+    // Get the current path without the locale prefix
+    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
+    // Navigate to the new locale with the same path
+    router.push(`/${newLocale}${pathWithoutLocale}`);
+  };
 
   // Prevent hydration mismatch by ensuring consistent rendering
   if (!isClient) {
@@ -50,7 +61,7 @@ export default function Navbar() {
             <button id="menuBtn" className="md:hidden rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
-            <select id="langSelect" className="rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">
+            <select id="langSelect" className="rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800" disabled>
               <option value="id">ID</option>
               <option value="en">EN</option>
             </select>
@@ -111,7 +122,12 @@ export default function Navbar() {
           <button id="menuBtn" className="md:hidden rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
-          <select id="langSelect" className="rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">
+          <select 
+            id="langSelect" 
+            className="rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
+            value={locale}
+            onChange={(e) => handleLanguageChange(e.target.value)}
+          >
             <option value="id">ID</option>
             <option value="en">EN</option>
           </select>

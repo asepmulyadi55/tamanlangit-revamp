@@ -2,44 +2,32 @@
 import React from "react";
 import PackageCard from "./PackageCard";
 import { useTranslations } from 'next-intl';
+import { PackageGridProps } from "../types/components";
 
-export default function PackageGrid() {
+export default function PackageGrid({ items, title, subtitle, headingTag = "h2", sectionClassName }: PackageGridProps) {
   const t = useTranslations('highlights');
 
-  const packages = [
-    {
-      title: t('packages.family.title'),
-      imageSrc: "/images/package 1.jpg",
-      description: t('packages.family.description'),
-      price: t('packages.family.price'),
-      ctaHref: "#contact",
-    },
-    {
-      title: t('packages.adventure.title'),
-      imageSrc: "/images/package 2.jpg",
-      description: t('packages.adventure.description'),
-      price: t('packages.adventure.price'),
-      ctaHref: "#contact",
-    },
-    {
-      title: t('packages.romantic.title'),
-      imageSrc: "/images/package 3.jpg",
-      description: t('packages.romantic.description'),
-      price: t('packages.romantic.price'),
-      ctaHref: "#contact",
-    },
-  ];
+  // Use provided title or fallback to translation
+  const displayTitle = title || t('packages.title');
 
   return (
-    <section className="py-16 md:py-20 bg-white dark:bg-slate-900">
+    <section className={sectionClassName || "py-16 md:py-20 bg-white dark:bg-slate-900"}>
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="font-display text-4xl md:text-5xl font-semibold text-center">{t('packages.title')}</h2>
+        {headingTag === "h1" ? (
+          <h1 className="font-display text-4xl md:text-5xl font-semibold text-center">{displayTitle}</h1>
+        ) : (
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-center">{displayTitle}</h2>
+        )}
+        {subtitle && (
+          <p className="text-center text-slate-600 dark:text-slate-300 mt-4 max-w-2xl mx-auto">{subtitle}</p>
+        )}
         <div className="mt-10 grid md:grid-cols-3 gap-6">
-          {packages.map((pkg, index) => (
+          {items.map((pkg, index) => (
             <PackageCard
-              key={index}
+              key={pkg.id || index}
               title={pkg.title}
               imageSrc={pkg.imageSrc}
+              imageAlt={pkg.imageAlt}
               description={pkg.description}
               price={pkg.price}
               ctaHref={pkg.ctaHref}

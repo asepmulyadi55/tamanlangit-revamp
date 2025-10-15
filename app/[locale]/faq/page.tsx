@@ -7,7 +7,8 @@ interface FAQPageProps {
   };
 }
 
-export default async function FAQPage({ params: { locale } }: FAQPageProps) {
+export default async function FAQPage({ params }: FAQPageProps) {
+  const { locale } = await params;
   const faqs = await getFAQs(locale);
   
   // Transform FAQ data to match FAQList component expectations

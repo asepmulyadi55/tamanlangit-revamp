@@ -8,7 +8,8 @@ interface BlogPageProps {
   };
 }
 
-export default async function BlogPage({ params: { locale } }: BlogPageProps) {
+export default async function BlogPage({ params }: BlogPageProps) {
+  const { locale } = await params;
   const posts = await getBlogPosts(locale);
   const t = await getTranslations('blog');
 

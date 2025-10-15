@@ -7,6 +7,7 @@ import TestimonialsSection from "../../components/TestimonialsSection";
 import ContactSection from "../../components/ContactSection";
 import Link from "next/link";
 import { getTranslations } from 'next-intl/server';
+import { getPackages } from "../../lib/content";
 
 interface HomePageProps {
   params: Promise<{
@@ -17,6 +18,7 @@ interface HomePageProps {
 export default async function Home({ params }: HomePageProps) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home' });
+  const packages = await getPackages(locale);
   
   return (
     <main>
@@ -25,7 +27,7 @@ export default async function Home({ params }: HomePageProps) {
           <SearchPanel />
         </Hero>
         
-        <Highlights />
+        <Highlights packages={packages} locale={locale} />
         
         <ActivitiesSection />
         

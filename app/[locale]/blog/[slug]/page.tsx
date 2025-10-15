@@ -4,10 +4,10 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     locale: string;
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
   const post = await getBlogPostBySlug(slug, locale);
   const t = await getTranslations('blog');
 

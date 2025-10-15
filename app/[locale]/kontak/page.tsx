@@ -7,7 +7,8 @@ interface ContactPageProps {
   };
 }
 
-export default function ContactPage({ params: { locale } }: ContactPageProps) {
+export default async function ContactPage({ params }: ContactPageProps) {
+  const { locale } = await params;
   return (
     <main className="pt-16">
       <section className="py-16 md:py-20">
