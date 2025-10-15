@@ -1,21 +1,35 @@
 "use client";
-import HomeSearch from "./HomeSearch";
+import React, { useState } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function SearchPanel() {
+  const t = useTranslations('search');
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState('');
+  const [guests, setGuests] = useState(2);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle search logic here
+    console.log({ checkIn, checkOut, guests });
+  };
+
   return (
-    <>
-      <form
-        id="searchForm"
-        aria-label="Pencarian ketersediaan camping"
+    <div className="mt-8">
+      <form 
+        onSubmit={handleSubmit}
         className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-3 md:gap-4 items-end rounded-3xl border border-black/5 bg-white/95 dark:bg-slate-900/95 shadow-soft p-4"
+        aria-label="Pencarian ketersediaan camping"
       >
         {/* Check-in */}
         <div className="flex flex-col">
           <span className="mb-1 text-xs font-medium text-slate-600 dark:text-slate-300">Check-in</span>
           <div className="group relative flex items-center rounded-full ring-1 ring-black/10 bg-white dark:bg-slate-900 focus-within:ring-2 focus-within:ring-tlp-forest h-12 px-4">
-            <input
-              type="date"
-              id="checkIn"
+            <input 
+              type="date" 
+              id="checkIn" 
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
               required
               className="w-full bg-transparent outline-none appearance-none text-sm placeholder:text-slate-400"
             />
@@ -29,9 +43,11 @@ export default function SearchPanel() {
         <div className="flex flex-col">
           <span className="mb-1 text-xs font-medium text-slate-600 dark:text-slate-300">Check-out</span>
           <div className="group relative flex items-center rounded-full ring-1 ring-black/10 bg-white dark:bg-slate-900 focus-within:ring-2 focus-within:ring-tlp-forest h-12 px-4">
-            <input
-              type="date"
-              id="checkOut"
+            <input 
+              type="date" 
+              id="checkOut" 
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
               required
               className="w-full bg-transparent outline-none appearance-none text-sm placeholder:text-slate-400"
             />
@@ -45,11 +61,12 @@ export default function SearchPanel() {
         <div className="flex flex-col">
           <span className="mb-1 text-xs font-medium text-slate-600 dark:text-slate-300">Guests</span>
           <div className="group relative flex items-center rounded-full ring-1 ring-black/10 bg-white dark:bg-slate-900 focus-within:ring-2 focus-within:ring-tlp-forest h-12 px-4">
-            <input
-              type="number"
-              id="guests"
-              min={1}
-              defaultValue={2}
+            <input 
+              type="number" 
+              id="guests" 
+              min="1" 
+              value={guests}
+              onChange={(e) => setGuests(parseInt(e.target.value))}
               required
               className="w-full bg-transparent outline-none text-sm"
             />
@@ -60,15 +77,13 @@ export default function SearchPanel() {
         </div>
 
         {/* Submit */}
-        <button
+        <button 
           type="submit"
           className="rounded-full bg-tlp-forest text-white font-medium hover:opacity-90 active:opacity-80 h-12 px-6"
         >
-          Search
+          {t('button')}
         </button>
       </form>
-      <p id="searchError" role="alert" aria-live="polite" className="mt-2 text-sm text-red-200 md:text-red-300"></p>
-      <HomeSearch />
-    </>
+    </div>
   );
 }

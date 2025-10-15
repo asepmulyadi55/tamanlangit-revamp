@@ -28,6 +28,10 @@
   letter-spacing: .2px;
 }
 
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(10px);

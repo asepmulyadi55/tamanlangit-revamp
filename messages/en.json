@@ -1,0 +1,128 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "packages": "Tour Packages",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "search": {
+    "title": "Find Your Perfect Camping Spot",
+    "placeholder": "Search for camping locations...",
+    "button": "Search",
+    "ariaLabel": "Camping availability search",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "searchButton": "Search"
+  },
+  "hero": {
+    "title": "Experience the Beauty of Nature",
+    "subtitle": "Calm, scenic, and memorable camping above the clouds.",
+    "cta": "Book Now",
+    "imageAlt": "Camping Hero"
+  },
+  "highlights": {
+    "about": {
+      "title": "About Us",
+      "description": "Taman Langit Pangalengan offers a peaceful camping experience with mountain panoramas and cool air.",
+      "imageAlt": "About Us Image",
+      "ctaText": "Learn More"
+    },
+    "packages": {
+      "title": "Featured Tour Packages",
+      "family": {
+        "title": "Family Package",
+        "description": "Family tent + simple breakfast.",
+        "price": "IDR 400,000"
+      },
+      "adventure": {
+        "title": "Adventure Package",
+        "description": "Trekking + bonfire + hot drinks.",
+        "price": "IDR 600,000"
+      },
+      "romantic": {
+        "title": "Romantic Package",
+        "description": "Couple tent + string light decoration.",
+        "price": "IDR 550,000"
+      }
+    }
+  },
+  "activities": {
+    "title": "Activities",
+    "hiking": {
+      "title": "Hiking",
+      "description": "Explore the calming pine forest trails.",
+      "alt": "Hiking Activity"
+    },
+    "campfire": {
+      "title": "Campfire",
+      "description": "Warm up the night with bonfire and acoustic music.",
+      "alt": "Campfire Activity"
+    },
+    "stargazing": {
+      "title": "Stargazing",
+      "description": "Clear night sky for stargazing.",
+      "alt": "Stargazing Activity"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "image1": {
+      "alt": "Gallery Photo 1"
+    },
+    "image2": {
+      "alt": "Gallery Photo 2"
+    },
+    "image3": {
+      "alt": "Gallery Photo 3"
+    },
+    "image4": {
+      "alt": "Gallery Photo 4"
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "testimonial1": {
+      "quote": "Amazing camping experience! The view is beautiful and the facilities are complete.",
+      "author": "Sarah M."
+    },
+    "testimonial2": {
+      "quote": "Perfect place to escape from city routine. Highly recommended!",
+      "author": "Budi S."
+    },
+    "testimonial3": {
+      "quote": "Friendly staff and amazing location. Will definitely come back!",
+      "author": "Lisa R."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "home": {
+    "blog": {
+      "title": "Latest Blog",
+      "description": "Tips and guides for the best camping experience",
+      "readMore": "Read More"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Taman Langit Pangalengan is a camping destination that offers an unforgettable experience at altitude with stunning mountain views.",
+    "bullets": {
+      "location": "Strategic location in Pangalengan",
+      "facilities": "Complete camping facilities",
+      "team": "Experienced and friendly team"
+    }
+  },
+  "blog": {
+    "title": "Blog"
+  }
+}

@@ -37,7 +37,7 @@ export interface PackageCardProps {
   title: string;
   imageSrc: string;
   imageAlt?: string;
-  bullets: string[];
+  description: string;
   price: string;
   ctaHref: string;
 }
