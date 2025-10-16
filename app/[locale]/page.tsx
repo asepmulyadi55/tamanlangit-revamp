@@ -9,6 +9,13 @@ import Link from "next/link";
 import { getTranslations } from 'next-intl/server';
 import { getPackages } from "../../lib/content";
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'id' },
+    { locale: 'en' }
+  ];
+}
+
 interface HomePageProps {
   params: Promise<{
     locale: string;
