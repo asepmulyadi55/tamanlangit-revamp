@@ -1,0 +1,128 @@
+{
+  "navbar": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "packages": "Paket Wisata",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "contact": "Kontak"
+  },
+  "search": {
+    "title": "Cari Paket",
+    "placeholder": "Cari paket wisata...",
+    "button": "Cari",
+    "ariaLabel": "Pencarian ketersediaan camping",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Tamu",
+    "searchButton": "Cari"
+  },
+  "hero": {
+    "title": "Rasakan Keindahan Alam",
+    "subtitle": "Camping yang tenang, indah, dan berkesan di atas awan.",
+    "cta": "Jelajahi Sekarang",
+    "imageAlt": "Hero Camping"
+  },
+  "highlights": {
+    "about": {
+      "title": "Tentang Kami",
+      "description": "Taman Langit Pangalengan menghadirkan pengalaman camping yang tenang dengan panorama pegunungan dan udara sejuk.",
+      "imageAlt": "Gambar Tentang Kami",
+      "ctaText": "Pelajari Lebih Lanjut"
+    },
+    "packages": {
+      "title": "Paket Wisata Unggulan",
+      "family": {
+        "title": "Paket Keluarga",
+        "description": "Tenda keluarga + sarapan sederhana.",
+        "price": "Rp 400.000"
+      },
+      "adventure": {
+        "title": "Paket Petualangan",
+        "description": "Trekking + api unggun + minuman hangat.",
+        "price": "Rp 600.000"
+      },
+      "romantic": {
+        "title": "Paket Romantis",
+        "description": "Tenda couple + dekorasi light string.",
+        "price": "Rp 550.000"
+      }
+    }
+  },
+  "activities": {
+    "title": "Aktivitas",
+    "hiking": {
+      "title": "Hiking",
+      "description": "Jelajahi jalur hutan pinus yang menenangkan.",
+      "alt": "Aktivitas Hiking"
+    },
+    "campfire": {
+      "title": "Api Unggun",
+      "description": "Hangatkan malam dengan api unggun dan musik akustik.",
+      "alt": "Aktivitas Api Unggun"
+    },
+    "stargazing": {
+      "title": "Stargazing",
+      "description": "Langit malam yang jernih untuk melihat bintang.",
+      "alt": "Aktivitas Stargazing"
+    }
+  },
+  "gallery": {
+    "title": "Galeri",
+    "image1": {
+      "alt": "Galeri Foto 1"
+    },
+    "image2": {
+      "alt": "Galeri Foto 2"
+    },
+    "image3": {
+      "alt": "Galeri Foto 3"
+    },
+    "image4": {
+      "alt": "Galeri Foto 4"
+    }
+  },
+  "testimonials": {
+    "title": "Testimoni",
+    "testimonial1": {
+      "quote": "Pengalaman camping yang luar biasa! Pemandangannya sangat indah dan fasilitasnya lengkap.",
+      "author": "Sarah M."
+    },
+    "testimonial2": {
+      "quote": "Tempat yang sempurna untuk melepas penat dari rutinitas kota. Sangat direkomendasikan!",
+      "author": "Budi S."
+    },
+    "testimonial3": {
+      "quote": "Staf yang ramah dan lokasi yang menakjubkan. Pasti akan kembali lagi!",
+      "author": "Lisa R."
+    }
+  },
+  "contact": {
+    "title": "Kontak Kami",
+    "form": {
+      "name": "Nama",
+      "email": "Email",
+      "message": "Pesan",
+      "submit": "Kirim Pesan"
+    }
+  },
+  "home": {
+    "blog": {
+      "title": "Blog Terbaru",
+      "description": "Tips dan panduan untuk pengalaman camping terbaik",
+      "readMore": "Baca Selengkapnya"
+    }
+  },
+  "about": {
+    "title": "Tentang Kami",
+    "description": "Taman Langit Pangalengan adalah destinasi camping yang menawarkan pengalaman tak terlupakan di ketinggian dengan pemandangan pegunungan yang menakjubkan.",
+    "bullets": {
+      "location": "Lokasi strategis di Pangalengan",
+      "facilities": "Fasilitas camping lengkap",
+      "team": "Tim yang berpengalaman dan ramah"
+    }
+  },
+  "blog": {
+    "title": "Blog"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "family-package",
+    "title": "Family Package",
+    "slug": "family-package",
+    "imageSrc": "/images/package 1.jpg",
+    "imageAlt": "Paket Keluarga - Tenda keluarga dengan pemandangan gunung",
+    "bullets": ["Tenda keluarga (4-6 orang)", "Sarapan sederhana", "Area bermain anak", "Matras dan bantal"],
+    "price": "Rp 400.000",
+    "description": "Paket ideal untuk liburan keluarga dengan fasilitas lengkap dan area bermain anak yang aman.",
+    "duration": "1 malam 2 hari",
+    "maxGuests": 6
+  },
+  {
+    "id": "adventure-package", 
+    "title": "Adventure Package",
+    "slug": "adventure-package",
+    "imageSrc": "/images/package 2.jpg",
+    "imageAlt": "Paket Petualangan - Trekking dan api unggun",
+    "bullets": ["Trekking guide", "Api unggun", "Minuman hangat", "Peralatan hiking"],
+    "price": "Rp 600.000",
+    "description": "Paket petualangan dengan trekking, api unggun, dan aktivitas outdoor yang menantang.",
+    "duration": "2 malam 3 hari",
+    "maxGuests": 4
+  },
+  {
+    "id": "romantic-package",
+    "title": "Romantic Package", 
+    "slug": "romantic-package",
+    "imageSrc": "/images/package 3.jpg",
+    "imageAlt": "Paket Romantis - Tenda couple dengan dekorasi lampu",
+    "bullets": ["Tenda couple", "Dekorasi light string", "Dinner romantis", "Sunrise viewing"],
+    "price": "Rp 550.000",
+    "description": "Paket romantis untuk pasangan dengan suasana intim dan pemandangan sunrise yang memukau.",
+    "duration": "1 malam 2 hari",
+    "maxGuests": 2
+  }
+]

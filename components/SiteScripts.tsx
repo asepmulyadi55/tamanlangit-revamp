@@ -1,14 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export default function SiteScripts() {
-  useEffect(() => {
-    // Footer year
-    const yearEl = document.getElementById("year");
-    if (yearEl) {
-      yearEl.textContent = String(new Date().getFullYear());
-    }
+  const pathname = usePathname();
+  const obsRef = useRef<IntersectionObserver | null>(null);
 
+  useEffect(() => {
     // Navbar shadow on scroll
     const nav = document.getElementById("nav");
     const onScroll = () => {
@@ -23,7 +21,6 @@ export default function SiteScripts() {
     const root = document.documentElement;
     const applyTheme = (isDark: boolean) => {
       root.classList.toggle("dark", isDark);
-      if (toggleBtn) toggleBtn.textContent = isDark ? "Light" : "Dark";
       localStorage.setItem("theme", isDark ? "dark" : "light");
     };
     (function initTheme() {
@@ -35,15 +32,19 @@ export default function SiteScripts() {
     toggleBtn?.addEventListener("click", toggleHandler);
 
     // Reveal on scroll
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("show");
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => obs.observe(el));
+    // Create shared IntersectionObserver for reveal elements
+    if (!obsRef.current) {
+      obsRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("show");
+          });
+        },
+        { threshold: 0.15 }
+      );
+    }
+    // Initial observe on first mount
+    document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => obsRef.current?.observe(el));
 
     // Mobile menu toggle
     const menuBtn = document.getElementById("menuBtn");
@@ -73,13 +74,28 @@ export default function SiteScripts() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       toggleBtn?.removeEventListener("click", toggleHandler);
-      obs.disconnect();
+      obsRef.current?.disconnect();
       // Cleanup mobile menu handlers
       menuBtn?.removeEventListener("click", menuToggleHandler);
       mobileLinks?.forEach((a) => a.removeEventListener("click", closeMenu));
       document.removeEventListener("keydown", escHandler);
     };
   }, []);
+
+  // Re-observe reveal elements on route change
+  useEffect(() => {
+    const obs = obsRef.current;
+    if (!obs) return;
+    const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    // reset and observe new elements
+    els.forEach((el) => {
+      el.classList.remove("show");
+      obs.observe(el);
+    });
+    return () => {
+      els.forEach((el) => obs.unobserve(el));
+    };
+  }, [pathname]);
 
   return null;
 }

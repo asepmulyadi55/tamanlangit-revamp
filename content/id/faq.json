@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "question": "Apa saja yang termasuk dalam paket camping?",
+    "answer": "Setiap paket camping kami sudah termasuk tenda, matras, dan fasilitas dasar. Untuk paket tertentu juga termasuk makanan dan aktivitas tambahan."
+  },
+  {
+    "id": "2", 
+    "question": "Apakah bisa membawa makanan sendiri?",
+    "answer": "Ya, Anda diperbolehkan membawa makanan dan minuman sendiri. Kami juga menyediakan area dapur umum dengan fasilitas memasak."
+  },
+  {
+    "id": "3",
+    "question": "Bagaimana jika cuaca buruk?",
+    "answer": "Kami memiliki shelter dan area tertutup untuk berlindung. Jika cuaca sangat ekstrem, kami akan memberikan opsi reschedule tanpa biaya tambahan."
+  },
+  {
+    "id": "4",
+    "question": "Apakah ada fasilitas kamar mandi?",
+    "answer": "Ya, tersedia toilet dan kamar mandi bersih dengan air hangat. Kami juga menyediakan area cuci piring dan tempat sampah."
+  },
+  {
+    "id": "5",
+    "question": "Berapa minimal usia untuk camping?",
+    "answer": "Tidak ada batasan usia minimal. Kami welcome untuk keluarga dengan anak-anak. Pastikan anak-anak selalu dalam pengawasan orang tua."
+  }
+]

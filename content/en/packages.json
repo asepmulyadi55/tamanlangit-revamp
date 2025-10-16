@@ -1,0 +1,38 @@
+[
+  {
+    "id": "family-package",
+    "title": "Family Package",
+    "slug": "family-package",
+    "imageSrc": "/images/package 1.jpg",
+    "imageAlt": "Family Package - Family tent with mountain view",
+    "bullets": ["Family tent (4-6 people)", "Simple breakfast", "Children's play area", "Mattress and pillows"],
+    "price": "Rp 400.000",
+    "description": "Ideal package for family vacation with complete facilities and safe children's play area.",
+    "duration": "1 night 2 days",
+    "maxGuests": 6
+  },
+  {
+    "id": "adventure-package", 
+    "title": "Adventure Package",
+    "slug": "adventure-package",
+    "imageSrc": "/images/package 2.jpg",
+    "imageAlt": "Adventure Package - Trekking and campfire",
+    "bullets": ["Trekking guide", "Campfire", "Hot drinks", "Hiking equipment"],
+    "price": "Rp 600.000",
+    "description": "Adventure package with trekking, campfire, and challenging outdoor activities.",
+    "duration": "2 nights 3 days",
+    "maxGuests": 4
+  },
+  {
+    "id": "romantic-package",
+    "title": "Romantic Package", 
+    "slug": "romantic-package",
+    "imageSrc": "/images/package 3.jpg",
+    "imageAlt": "Romantic Package - Couple tent with string lights decoration",
+    "bullets": ["Couple tent", "String light decoration", "Romantic dinner", "Sunrise viewing"],
+    "price": "Rp 550.000",
+    "description": "Romantic package for couples with intimate atmosphere and stunning sunrise views.",
+    "duration": "1 night 2 days",
+    "maxGuests": 2
+  }
+]
