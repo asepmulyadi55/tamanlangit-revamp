@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
         <div className="mt-10 grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <blockquote key={index} className="rounded-2xl border p-6 shadow-soft reveal">
-              <p>"{testimonial.quote}"</p>
+              <p>&ldquo;{testimonial.quote}&rdquo;</p>
               <footer className="mt-3 text-sm text-slate-500 dark:text-slate-400">
                 — {testimonial.author}
               </footer>
