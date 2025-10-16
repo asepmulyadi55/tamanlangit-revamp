@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "question": "What is included in the camping package?",
+    "answer": "Each of our camping packages includes tent, mattress, and basic facilities. Certain packages also include food and additional activities."
+  },
+  {
+    "id": "2", 
+    "question": "Can we bring our own food?",
+    "answer": "Yes, you are allowed to bring your own food and drinks. We also provide a communal kitchen area with cooking facilities."
+  },
+  {
+    "id": "3",
+    "question": "What if the weather is bad?",
+    "answer": "We have shelters and covered areas for protection. If the weather is extremely bad, we will provide reschedule options at no additional cost."
+  },
+  {
+    "id": "4",
+    "question": "Are there bathroom facilities?",
+    "answer": "Yes, clean toilets and bathrooms with hot water are available. We also provide dishwashing areas and trash bins."
+  },
+  {
+    "id": "5",
+    "question": "What is the minimum age for camping?",
+    "answer": "There is no minimum age limit. We welcome families with children. Please ensure children are always under parental supervision."
+  }
+]
