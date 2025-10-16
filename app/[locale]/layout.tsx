@@ -43,13 +43,19 @@ export default async function LocaleLayout({
   const { locale } = await params;
   
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(locale as string)) {
     notFound();
   }
 
   // Providing all messages to the client
   // side is the easiest way to get started
-  const messages = await getMessages({ locale });
+  let messages;
+  try {
+    messages = await getMessages({ locale });
+  } catch (error) {
+    console.error('Error loading messages for locale:', locale, error);
+    notFound();
+  }
 
   return (
     <html lang={locale} className={`scroll-smooth ${inter.variable} ${cormorant.variable}`} data-scroll-behavior="smooth">
