@@ -1,6 +1,5 @@
 import BlogPostContent from "../../../../components/BlogPostContent";
 import { getBlogPostBySlug, getAllBlogSlugs } from "../../../../lib/content";
-import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 interface BlogPostPageProps {
@@ -25,7 +24,6 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params;
   const post = await getBlogPostBySlug(slug, locale);
-  const t = await getTranslations('blog');
 
   if (!post) {
     notFound();

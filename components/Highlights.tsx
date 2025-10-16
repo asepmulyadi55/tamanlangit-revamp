@@ -1,7 +1,6 @@
 "use client";
 import AboutSection from "./AboutSection";
 import PackageGrid from "./PackageGrid";
-import { useTranslations } from 'next-intl';
 import { Package } from "../lib/content";
 
 interface HighlightsProps {
@@ -10,8 +9,6 @@ interface HighlightsProps {
 }
 
 export default function Highlights({ packages, locale }: HighlightsProps) {
-  const t = useTranslations('highlights');
-  
   // Transform package data to match PackageGrid component expectations
   const packageItems = packages.map(pkg => ({
     id: pkg.id,
