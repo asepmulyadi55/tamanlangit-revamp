@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Taman Langit</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            tlp: { forest: '#2E7D32', soft: '#6BBF59', beige: '#F5EBD0', surface: '#FAFAF7' }
+          },
+          boxShadow: { soft: '0 8px 24px rgba(0,0,0,0.06)' },
+          borderRadius: { '2xl': '1rem' }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+      --font-display: 'Cormorant Garamond', serif;
+    }
+
+    .font-display {
+      font-family: var(--font-display);
+      letter-spacing: .2px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all .5s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+
+</head>
+
+<body class="bg-[#F3EFE6] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+
+  <header id="nav"
+    class="fixed inset-x-0 top-0 z-50 bg-[#F3EFE6]/85 dark:bg-slate-900/70 backdrop-blur transition-shadow">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-semibold tracking-wide">Taman Langit</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="tentang-kami.html" class="hover:opacity-80">Tentang Kami</a>
+        <a href="paket-wisata.html" class="hover:opacity-80">Paket Wisata</a>
+        <a href="blog.html" class="hover:opacity-80">Blog</a>
+        <a href="faq.html" class="hover:opacity-80">FAQ</a>
+        <a href="kontak.html" class="hover:opacity-80">Kontak</a>
+      </nav>
+      <button id="toggleTheme"
+        class="rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">Dark</button>
+    </div>
+  </header>
+
+  <main class="pt-16">
+
+    <section class="py-16 md:py-20">
+      <div class="mx-auto max-w-5xl px-4">
+        <h1 class="font-display text-4xl md:text-5xl font-semibold text-center">FAQ</h1>
+        <div class="mt-10 space-y-4">
+
+          <details class="rounded-2xl border p-5 shadow-soft reveal">
+            <summary class="font-medium cursor-pointer">Pertanyaan 1 — Apakah bisa bawa hewan peliharaan?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Mohon maaf, saat ini belum tersedia area khusus
+              untuk hewan peliharaan.</p>
+          </details>
+
+
+          <details class="rounded-2xl border p-5 shadow-soft reveal">
+            <summary class="font-medium cursor-pointer">Pertanyaan 2 — Apakah bisa bawa hewan peliharaan?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Mohon maaf, saat ini belum tersedia area khusus
+              untuk hewan peliharaan.</p>
+          </details>
+
+
+          <details class="rounded-2xl border p-5 shadow-soft reveal">
+            <summary class="font-medium cursor-pointer">Pertanyaan 3 — Apakah bisa bawa hewan peliharaan?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Mohon maaf, saat ini belum tersedia area khusus
+              untuk hewan peliharaan.</p>
+          </details>
+
+
+          <details class="rounded-2xl border p-5 shadow-soft reveal">
+            <summary class="font-medium cursor-pointer">Pertanyaan 4 — Apakah bisa bawa hewan peliharaan?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Mohon maaf, saat ini belum tersedia area khusus
+              untuk hewan peliharaan.</p>
+          </details>
+
+
+          <details class="rounded-2xl border p-5 shadow-soft reveal">
+            <summary class="font-medium cursor-pointer">Pertanyaan 5 — Apakah bisa bawa hewan peliharaan?</summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Mohon maaf, saat ini belum tersedia area khusus
+              untuk hewan peliharaan.</p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+    © <span id="year"></span> Taman Langit Pangalengan. All rights reserved.
+  </footer>
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const nav = document.getElementById('nav');
+    const onScroll = () => { if (window.scrollY > 10) nav.classList.add('shadow'); else nav.classList.remove('shadow'); };
+    window.addEventListener('scroll', onScroll);
+    const toggleBtn = document.getElementById('toggleTheme');
+    const root = document.documentElement;
+    const applyTheme = (isDark) => { root.classList.toggle('dark', isDark); toggleBtn.textContent = isDark ? 'Light' : 'Dark'; localStorage.setItem('theme', isDark ? 'dark' : 'light'); };
+    (function initTheme() { const pref = localStorage.getItem('theme') || 'system'; const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches; applyTheme(pref === 'dark' || (pref === 'system' && systemDark)); })();
+    toggleBtn.addEventListener('click', () => applyTheme(!root.classList.contains('dark')));
+    const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }); }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+
+</body>
+
+</html>
